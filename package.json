@@ -6,14 +6,14 @@
   "dependencies": {},
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1", 
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "browser-sync start --server --directory --files '**/*'"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JenniferEstelle/coursera-test.git"
   },
-  "author": "",
+  "author": "JenniferEstelleBedford",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/JenniferEstelle/coursera-test/issues"
