@@ -13,15 +13,17 @@
 
         //when you click the "Check if too much button", run foodcalc.
         $scope.foodcalc = function () {
-            var food = [];
             var food = $scope.foodlist.split(",");
             console.log(food); //is food returning an array or a string of arrays? 
 
             //filter through food, and trim whitespace around , 
-            var filtered = [];
             var filtered = food.filter(function (item) {
-                return item.trim(',') > 0;
-            })
+                return item.trim() > 0;
+            }).map(function(item) {
+                return item.trim();
+            });
+
+            
             console.log(filtered);  //is filtered working correctly?
 
             if (filtered.length <= 0) {
