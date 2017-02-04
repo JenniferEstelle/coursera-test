@@ -2,7 +2,7 @@
   "name": "coursera-test",
   "version": "1.0.0",
   "description": "Test repo for coursera",
-  "main": "index.html",
+  "main": "../index.html",
   "dependencies": {},
   "devDependencies": {},
   "scripts": {
