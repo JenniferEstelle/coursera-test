@@ -37,8 +37,7 @@
         };
 
 
-        //user clicks button (foodcalc)
-        //user sees a message display
+
 
     };
 
