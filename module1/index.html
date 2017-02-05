@@ -5,6 +5,7 @@
 <head>
   <title>Lunch Checker</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet/css" href="styles/style.css">
   <link rel="stylesheet" href="styles/bootstrap.min.css">
   <style>
     .message {
@@ -12,9 +13,10 @@
       font-weight: bold;
     }
   </style>
+  
 </head>
 
-<body ng-cloak ng-app="LunchCheck">
+<body ng-app="LunchCheck">
   <div class="container" ng-controller="LunchCheckController">
     <h1>Lunch Checker</h1>
 
@@ -25,7 +27,7 @@
     <div class="form-group">
       <button class="btn btn-default" ng-click="foodcalc()">Check If Too Much</button>
     </div>
-    <div class="form-group message" ng-model="foodresponse">
+    <div class="form-group message" ng-model="foodresponse" ng-cloak>
       {{foodresponse}}
     </div>
     <script src="../vendor/angular/angular.min.js"></script>
