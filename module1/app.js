@@ -4,7 +4,7 @@
     angular.module('LunchCheck', [])
         .controller('LunchCheckController', LunchCheckController);  //define viewModel of view
 
-    LunchCheckController.$inject = ['$scope'];
+    LunchCheckController.$inject = ['$scope']; //avoid problems with minification
     function LunchCheckController($scope) {
 
         //when you click the "Check if too much button", run foodcalc.
