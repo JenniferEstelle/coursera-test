@@ -9,13 +9,14 @@
 
         //when you click the "Check if too much button", run foodcalc.
         $scope.foodcalc = function () {
-            var food = $scope.foodlist.split(",");
+            var food = [];
+            food = $scope.foodlist.split(",");
             console.log(food);
 
 
             //filter through food, and trim whitespace around , 
             var filtered = food.filter(function (item) {
-                return item.trim() > 0;
+                return item.trim().length > 0;
             }).map(function (item) {
                 return item.trim();
             });
@@ -23,7 +24,7 @@
 
 
             if (filtered.length <= 0) {
-                $scope.foodresponse = "Please enter data";
+                $scope.foodresponse = "Please enter data first";
             } else if (filtered.length <= 3 && filtered.length != 0) {
                 $scope.foodresponse = "Enjoy!";
             } else if (filtered.length > 3) {
