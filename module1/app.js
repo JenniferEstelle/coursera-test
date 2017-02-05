@@ -9,8 +9,7 @@
 
         //when you click the "Check if too much button", run foodcalc.
         $scope.foodcalc = function () {
-            var food = [];
-            food = $scope.foodlist.split(",");
+            var food = $scope.foodlist.split(",");
             console.log(food);
 
 

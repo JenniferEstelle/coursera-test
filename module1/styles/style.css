@@ -3,3 +3,13 @@
 .ng-hide:not(.ng-hide-animate) {
   display: none !important;
 }
+
+.enjoy, .too-much {
+    color: green;
+    border: 1px solid green;
+}
+
+.enter-data {
+    color: red;
+    border: 1px solid red;
+}
