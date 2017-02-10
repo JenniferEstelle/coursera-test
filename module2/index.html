@@ -22,15 +22,16 @@
       }
     </style>
   </head>
-<body>
+<body ng-app="ShoppingListCheckOff">
   <div class="container">
   <h1>Shopping List Check Off</h1>
 
   <div class="row">
 
     <!-- To Buy List -->
-    <div class="col-md-6">
+    <div class="col-md-6" ng-controller="ToBuyController as buy">
      <h2>To Buy:</h2>
+     {{buy.title}}
      <ul>
        <li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
        <li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
@@ -39,8 +40,9 @@
     </div>
 
     <!-- Already Bought List -->
-    <div class="col-md-6">
+    <div class="col-md-6" ng-controller="AlreadyBoughtController as bought">
      <h2>Already Bought:</h2>
+     
      <ul>
        <li>Bought 10 cookies</li>
      </ul>
@@ -48,6 +50,7 @@
     </div>
   </div>
 </div>
-
+    <script src="../vendor/angular/angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
 </body>
 </html>
