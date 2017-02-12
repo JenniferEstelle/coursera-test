@@ -11,19 +11,22 @@
     AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
 
     function ToBuyController(ShoppingListCheckOffService) {
-        console.log('controller exists!');
         var buyCtrl = this;
+        
         buyCtrl.toBuy = ShoppingListCheckOffService.toBuy;  //scope variable points to service variable (toBuy)
-
+        
         buyCtrl.markAsBought = function (item) {
             ShoppingListCheckOffService.markAsBought(item);
-        }
+        };
+
+        buyCtrl.emptyMessage = "Everything is bought!";
     };
 
     function AlreadyBoughtController(ShoppingListCheckOffService) {
-        console.log('controller exists!');
         var boughtCtrl = this;  //you are not changing the value or assigning this to boughtCtrl here.  Readability is the purpose here.
         boughtCtrl.bought = ShoppingListCheckOffService.bought;
+        boughtCtrl.emptyMessage = "Nothing bought yet";
+
     };
 
     function ShoppingListCheckOffService() {
@@ -31,7 +34,7 @@
         // //method that removes item from tobuy array and pushes to the bought array
         var service = this;
         service.bought = [
-            
+
         ];
 
         service.toBuy = [
@@ -59,8 +62,6 @@
 
         service.markAsBought = function (item) {
             console.debug(item.name);
-            //add item to service.bought 
-            //remove item from tobuy
             service.bought.push(item);
             service.toBuy.splice(service.toBuy.indexOf(item), 1)
         }

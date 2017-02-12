@@ -36,7 +36,7 @@
        <li ng-repeat="item in buyCtrl.toBuy">Buy {{item.quantity}} {{item.name}}  <button ng-click="buyCtrl.markAsBought(item)" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
        
      </ul>
-     <!--<div class="emptyMessage">Everything is bought!</div>-->
+     <div class="emptyMessage" ng-if="buyCtrl.toBuy == ''">{{buyCtrl.emptyMessage}}</div>
     </div>
 
     <!-- Already Bought List -->
@@ -46,7 +46,7 @@
      <ul>
        <li ng-repeat="item in boughtCtrl.bought">Bought {{item.quantity}} {{item.name}}</li>
      </ul>
-     <!--<div class="emptyMessage">Nothing bought yet.</div>-->
+     <div class="emptyMessage" ng-if="boughtCtrl.bought == ''">{{boughtCtrl.emptyMessage}}</div>
     </div>
   </div>
 </div>
