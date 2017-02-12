@@ -13,7 +13,28 @@
     function ToBuyController(ShoppingListCheckOffService) {
         console.log('controller exists!');
         var buyCtrl = this;
-        buyCtrl.toBuy = [
+        buyCtrl.toBuy = ShoppingListCheckOffService.toBuy;  //scope variable points to service variable (toBuy)
+
+        buyCtrl.markAsBought = function (item) {
+            ShoppingListCheckOffService.markAsBought(item);
+        }
+    };
+
+    function AlreadyBoughtController(ShoppingListCheckOffService) {
+        console.log('controller exists!');
+        var boughtCtrl = this;  //you are not changing the value or assigning this to boughtCtrl here.  Readability is the purpose here.
+        boughtCtrl.bought = ShoppingListCheckOffService.bought;
+    };
+
+    function ShoppingListCheckOffService() {
+
+        // //method that removes item from tobuy array and pushes to the bought array
+        var service = this;
+        service.bought = [
+            
+        ];
+
+        service.toBuy = [
             {
                 name: 'cookies',
                 quantity: '10'
@@ -21,7 +42,7 @@
             {
                 name: 'chips',
                 quantity: '10'
-            }, 
+            },
             {
                 name: 'drinks',
                 quantity: '10'
@@ -35,34 +56,13 @@
                 quantity: '10'
             }
         ];
-        console.log(buyCtrl.toBuy);
-    };
 
-    function AlreadyBoughtController(ShoppingListCheckOffService) {
-        console.log('controller exists!');
-        var boughtCtrl = this;  //you are not changing the value or assigning this to boughtCtrl here.  Readability is the purpose here.
-
-
-    };
-
-    function ShoppingListCheckOffService() {
-        // console.log("test!");
-
-
-
-        // //method that removes item from tobuy array and pushes to the bought array
-        // var service = this;
-        // this.bought = [];
-        // this.tobuy = [];
-
-        // service.markBought = function () {
-        //     console.log("service.buyItem is working");
-        //     //add item to bought array
-        //     //remove item from tobuy array 
-
-        // };
-
-
+        service.markAsBought = function (item) {
+            console.debug(item.name);
+            //add item to service.bought 
+            //remove item from tobuy
+            service.bought.push(item);
+        }
     };
 
 
