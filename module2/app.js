@@ -11,13 +11,35 @@
     AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
 
     function ToBuyController(ShoppingListCheckOffService) {
-        console.log("controller exists!");
+        console.log('controller exists!');
         var buyCtrl = this;
-
+        buyCtrl.toBuy = [
+            {
+                name: 'cookies',
+                quantity: '10'
+            },
+            {
+                name: 'chips',
+                quantity: '10'
+            }, 
+            {
+                name: 'drinks',
+                quantity: '10'
+            },
+            {
+                name: 'kale',
+                quantity: '10'
+            },
+            {
+                name: 'tuna',
+                quantity: '10'
+            }
+        ];
+        console.log(buyCtrl.toBuy);
     };
 
     function AlreadyBoughtController(ShoppingListCheckOffService) {
-        console.log("controller exists!");
+        console.log('controller exists!');
         var boughtCtrl = this;  //you are not changing the value or assigning this to boughtCtrl here.  Readability is the purpose here.
 
 

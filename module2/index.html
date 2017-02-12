@@ -33,10 +33,10 @@
      <h2>To Buy:</h2>
      <ul>
        <!--bind a method to the ng-click that calls the correct method inside your ShoppingListCheckOffService -->
-       <li>Buy 10 cookies <button ng-click="" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
-       <li>Buy 10 cookies <button ng-click="" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
+       <li ng-repeat="item in buyCtrl.toBuy">Buy {{item.quantity}} {{item.name}}  <button ng-click="" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
+       
      </ul>
-     <div class="emptyMessage">Everything is bought!</div>
+     <!--<div class="emptyMessage">Everything is bought!</div>-->
     </div>
 
     <!-- Already Bought List -->
@@ -46,7 +46,7 @@
      <ul>
        <li>Bought 10 cookies</li>
      </ul>
-     <div class="emptyMessage">Nothing bought yet.</div>
+     <!--<div class="emptyMessage">Nothing bought yet.</div>-->
     </div>
   </div>
 </div>
