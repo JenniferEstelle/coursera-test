@@ -62,6 +62,7 @@
             //add item to service.bought 
             //remove item from tobuy
             service.bought.push(item);
+            service.toBuy.splice(service.toBuy.indexOf(item), 1)
         }
     };
 
