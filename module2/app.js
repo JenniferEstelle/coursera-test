@@ -64,7 +64,7 @@
         service.markAsBought = function (item) {
             console.debug(item.name);
             service.bought.push(item);
-            service.toBuy.splice(service.toBuy.indexOf(item), 1)
+            service.toBuy.splice(service.toBuy.indexOf(item), 1);
         }
     };
 
