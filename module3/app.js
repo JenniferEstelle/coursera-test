@@ -13,16 +13,11 @@
         var searchTerm = "";
 
         //we are returning a promise.
-        var promise = MenuSearchService.getMatchedMenuItems(searchTerm);
-
-        promise.then(function (response) {     //function success(response)
-            narrowCtrl.menu = response.data;
-            console.log("response.data: ", response.data);
-            console.log(narrowCtrl.menu.menu_items[0].description);
-        })
-            .catch(function (error) {  //function error (response)
-                console.log("Something went terribly wrong.");
-            });
+        //var promise = MenuSearchService.getMatchedMenuItems(searchTerm);
+        narrowCtrl.found = function (searchTerm) {
+            MenuSearchService.getMatchedMenuItems(searchTerm);
+        }
+        
     };
 
     MenuSearchService.$inject = ['$q', '$http', 'ApiBasePath'];
@@ -34,8 +29,20 @@
             var response = $http({
                 method: 'GET',
                 url: (ApiBasePath + '/menu_items.json')
-            })
-            return response;   
+            }).then(function (response) {  //on success
+                var items = response.data.menu_items;
+                //console.log("menu_items: ", items);  //is the http request working?
+
+                var filtered = items.filter(function (i) {
+                    return i.description.includes(searchTerm.toLowerCase());
+                })
+                console.log("filtered: ", filtered); //is the filter working?
+                return filtered;
+
+            }).catch(function (error) {  //function error (response)
+                console.log("Something went terribly wrong.");
+            });
+            return response;
         }
     }
 
