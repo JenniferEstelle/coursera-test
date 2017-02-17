@@ -14,10 +14,17 @@
 
         //we are returning a promise.
         //var promise = MenuSearchService.getMatchedMenuItems(searchTerm);
+        /*narrowCtrl.found = function (searchTerm) {
+            MenuSearchService.getMatchedMenuItems(searchTerm).then(function(response) {
+                narrowCtrl.found = response;
+            })
+        }*/
         narrowCtrl.found = function (searchTerm) {
-            MenuSearchService.getMatchedMenuItems(searchTerm);
+            MenuSearchService.getMatchedMenuItems(searchTerm).then(function (response) {
+                narrowCtrl.response = response;
+            })
         }
-        
+
     };
 
     MenuSearchService.$inject = ['$q', '$http', 'ApiBasePath'];
@@ -32,7 +39,7 @@
             }).then(function (response) {  //on success
                 var items = response.data.menu_items;
                 //console.log("menu_items: ", items);  //is the http request working?
-
+                
                 var filtered = items.filter(function (i) {
                     return i.description.includes(searchTerm.toLowerCase());
                 })
