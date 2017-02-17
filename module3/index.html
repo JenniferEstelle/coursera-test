@@ -22,10 +22,15 @@
 
 		<!-- found-items should be implemented as a component -->
 		<!--<found-items found-items="...." on-remove="...."></found-items>-->
-    <ul>
-      <li ng-repeat="item in narrowCtrl.response">{{item.name}}</li>
-    </ul>
-    <!--Are we supposed to have a <button ng-click="narrowCtrl.removeItem($index)"></button>-->
+		
+			<found-items
+        items="narrowCtrl.response"
+		name="{{narrowCtrl.name}}"
+        bad-remove="narrowCtrl.removeItem"
+        on-remove="narrowCtrl.removeItem(index)"></found-items>
+			
+		
+		<!--Are we supposed to have a <button ng-click="narrowCtrl.removeItem($index)"></button>-->
 	</div>
 	<script src="../vendor/angular/angular.js"></script>
 	<script type="text/javascript" src="app.js"></script>

@@ -4,7 +4,40 @@
     angular.module('NarrowItDownApp', [])
         .controller('NarrowItDownController', NarrowItDownController)
         .service('MenuSearchService', MenuSearchService)
-        .constant('ApiBasePath', "http://davids-restaurant.herokuapp.com");
+        .constant('ApiBasePath', "http://davids-restaurant.herokuapp.com")
+        .directive('foundItemsDirective', foundItemsDirective);
+
+    function foundItemsDirective() {
+        var ddo = {
+
+            templateURL: foundItems.html,
+            scope: {
+                items: '<',
+                name: '@name',
+                badRemove: '=',
+                onRemove: '&'
+            },
+            controller: NarrowItDownController,
+            controllerAs: 'narrowCtrl',
+            bindToController: true
+        };
+        return ddo;
+    }
+
+    /*function foundItemsController() {
+        var narrowCtrl = this;
+
+        narrowCtrl.itemsInList = function () {
+            for (var i = 0; i < narrowCtrl.items.length; i++) {
+                var name = narrowCtrl.items[i].name;
+                if (name.toLowerCase().indexOf("cookie") !== -1) {
+                    return true;
+                }
+            }
+
+            return false;
+        };
+    }*/
 
 
     NarrowItDownController.$inject = ['MenuSearchService'];
@@ -12,19 +45,11 @@
         var narrowCtrl = this;
         var searchTerm = "";
 
-        //we are returning a promise.
-        //var promise = MenuSearchService.getMatchedMenuItems(searchTerm);
-        /*narrowCtrl.found = function (searchTerm) {
-            MenuSearchService.getMatchedMenuItems(searchTerm).then(function(response) {
-                narrowCtrl.found = response;
-            })
-        }*/
         narrowCtrl.found = function (searchTerm) {
             MenuSearchService.getMatchedMenuItems(searchTerm).then(function (response) {
                 narrowCtrl.response = response;
             })
         }
-
     };
 
     MenuSearchService.$inject = ['$q', '$http', 'ApiBasePath'];
@@ -39,7 +64,7 @@
             }).then(function (response) {  //on success
                 var items = response.data.menu_items;
                 //console.log("menu_items: ", items);  //is the http request working?
-                
+
                 var filtered = items.filter(function (i) {
                     return i.description.includes(searchTerm.toLowerCase());
                 })
