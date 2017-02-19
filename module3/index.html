@@ -10,27 +10,29 @@
 
 <body ng-app="NarrowItDownApp">
 
-	<div class="container" ng-controller="NarrowItDownController as narrowCtrl">
+	<div class="container" ng-controller="NarrowItDownController as listCtrl">
 		<h1>Narrow Down Your Chinese Menu Choice</h1>
 
 		<div class="form-group">
-			<input type="text" placeholder="search term" class="form-control" ng-model="narrowCtrl.searchTerm">
+			<input type="text" placeholder="search term" class="form-control" ng-model="listCtrl.searchTerm">
 		</div>
 		<div class="form-group narrow-button">
-			<button class="btn btn-primary" ng-click="narrowCtrl.found(narrowCtrl.searchTerm)">Narrow It Down For Me!</button>
+			<!--map of parent template declared argname to value from directive.  -->
+			<!--<button class="btn btn-primary" ng-click="dirCtrl.myFound({myArg: 'v1'});">Narrow It Down For Me!</button>-->
+			<button class="btn btn-primary" ng-click="listCtrl.response(listCtrl.searchTerm);">Narrow It Down For Me!</button>
 		</div>
 
 		<!-- found-items should be implemented as a component -->
 		<!--<found-items found-items="...." on-remove="...."></found-items>-->
-		
-			<found-items
-        items="narrowCtrl.response"
-		name="{{narrowCtrl.name}}"
-        bad-remove="narrowCtrl.removeItem"
-        on-remove="narrowCtrl.removeItem(index)"></found-items>
-			
-		
-		<!--Are we supposed to have a <button ng-click="narrowCtrl.removeItem($index)"></button>-->
+		<!--attempt below w/ found-items-->
+		<!--<div ng-controller="FoundItemsDirectiveCtrl as dirCtrl">-->
+			<!--<found-items found="listCtrl.found(myArg)" found-array="listCtrl.found" bad-remove="listCtrl.removeItem" on-remove="listCtrl.removeItem(index)">
+
+			</found-items>-->
+		</div>
+
+
+		<!--Are we supposed to have a <button ng-click="listCtrl.removeItem($index)"></button>-->
 	</div>
 	<script src="../vendor/angular/angular.js"></script>
 	<script type="text/javascript" src="app.js"></script>

@@ -1,7 +1,6 @@
 <ul>
-    <li ng-repeat="item in narrowCtrl.response">
+    <li ng-repeat="item in listCtrl.found">
         {{item.name}}
-        <button ng-click="narrowCtrl.badRemove($index);">Bad Remove Item</button>
-        <button ng-click="narrowCtrl.onRemove({index: $index});">Remove Item</button>
+        <button ng-click="listCtrl.onRemove({index: $index});">Remove Item</button>
     </li>
 </ul>

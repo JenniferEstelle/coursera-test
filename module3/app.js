@@ -4,57 +4,71 @@
     angular.module('NarrowItDownApp', [])
         .controller('NarrowItDownController', NarrowItDownController)
         .service('MenuSearchService', MenuSearchService)
-        .constant('ApiBasePath', "http://davids-restaurant.herokuapp.com")
-        .directive('foundItemsDirective', foundItemsDirective);
+        .constant('ApiBasePath', 'http://davids-restaurant.herokuapp.com')
+        .directive('foundItems', FoundItemsDirective);
 
-    function foundItemsDirective() {
+    function FoundItemsDirective() {
         var ddo = {
-
-            templateURL: foundItems.html,
             scope: {
-                items: '<',
+                foundArray: '<',
                 name: '@name',
-                badRemove: '=',
-                onRemove: '&'
+                onRemove: '&',
+                myFound: '&found'  //attempt
             },
             controller: NarrowItDownController,
-            controllerAs: 'narrowCtrl',
-            bindToController: true
+            controllerAs: 'listCtrl',
+            bindToController: true,
+            templateURL: 'foundItems.html'
         };
         return ddo;
     }
 
-    /*function foundItemsController() {
-        var narrowCtrl = this;
-
-        narrowCtrl.itemsInList = function () {
-            for (var i = 0; i < narrowCtrl.items.length; i++) {
-                var name = narrowCtrl.items[i].name;
-                if (name.toLowerCase().indexOf("cookie") !== -1) {
-                    return true;
-                }
-            }
-
-            return false;
-        };
-    }*/
-
 
     NarrowItDownController.$inject = ['MenuSearchService'];
     function NarrowItDownController(MenuSearchService) {
-        var narrowCtrl = this;
-        var searchTerm = "";
+        var listCtrl = this;
+        var searchTerm = '';
 
-        narrowCtrl.found = function (searchTerm) {
-            MenuSearchService.getMatchedMenuItems(searchTerm).then(function (response) {
-                narrowCtrl.response = response;
-            })
-        }
+        listCtrl.found = [];
+
+        //attempt below
+       /* listCtrl.response = function (arg1) {
+            listCtrl.found = "Hi " + arg1;
+        }*/
+         listCtrl.response = function (searchTerm) {
+             MenuSearchService.getMatchedMenuItems(searchTerm)
+                 .then(function (response) {
+                     for (var i = 0; i < response.length; i++) {
+                         listCtrl.found.push(response[i]);
+                     }
+                 })
+             console.log(listCtrl.found)
+         };
+         
+        listCtrl.removeItem = function (itemIndex) {
+            console.log("'this' is: ", this);
+            this.lastRemoved = "Last item removed was " + this.items[itemIndex].name;
+            shoppingList.removeItem(itemIndex);
+            this.title = origTitle + " (" + list.items.length + " items )";
+        };
+
     };
+
+
+    /*  PREVIOUS SOLUTION that worked with simple custom directives to listCtrl.found(listCtrl.searchTerm) on the button and listCtrl.response on the found-items directive)
+        listCtrl.found = function (searchTerm) {
+           MenuSearchService.getMatchedMenuItems(searchTerm).then(function (response) {
+               listCtrl.response = response;
+           })
+
+           
+    }*/
+
 
     MenuSearchService.$inject = ['$q', '$http', 'ApiBasePath'];
     function MenuSearchService($q, $http, ApiBasePath) {
         var service = this;
+        var found = [];
 
         //this function below returns a promise (see above)
         service.getMatchedMenuItems = function (searchTerm) {
@@ -76,7 +90,14 @@
             });
             return response;
         }
+
+        service.removeItem = function (itemIndex) {
+            items.splice(itemIndex, 1);
+        };
+
+
     }
+
 
 })();
 
