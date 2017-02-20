@@ -12,9 +12,9 @@
 
     function ToBuyController(ShoppingListCheckOffService) {
         var buyCtrl = this;
-        
+
         buyCtrl.toBuy = ShoppingListCheckOffService.toBuy;  //scope variable points to service variable (toBuy)
-        
+
         buyCtrl.markAsBought = function (item) {
             ShoppingListCheckOffService.markAsBought(item);
         };
@@ -24,7 +24,7 @@
 
     function AlreadyBoughtController(ShoppingListCheckOffService) {
         var boughtCtrl = this;  //you are not changing the value or assigning this to boughtCtrl here.  Readability is the purpose here.
-        
+
         boughtCtrl.bought = ShoppingListCheckOffService.bought;
         boughtCtrl.emptyMessage = "Nothing bought yet";
 
@@ -34,9 +34,7 @@
 
         // //method that removes item from tobuy array and pushes to the bought array
         var service = this;
-        service.bought = [
-
-        ];
+        service.bought = [];
 
         service.toBuy = [
             {
