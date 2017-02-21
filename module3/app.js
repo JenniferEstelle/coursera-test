@@ -59,8 +59,8 @@
     };
 
 
-    MenuSearchService.$inject = ['$q', '$http', 'ApiBasePath'];
-    function MenuSearchService($q, $http, ApiBasePath) {
+    MenuSearchService.$inject = ['$http', 'ApiBasePath'];
+    function MenuSearchService($http, ApiBasePath) {
         var service = this;
 
         //this function below returns a promise (see above)
@@ -72,6 +72,7 @@
             }).then(function (response) {  //on success
                 var items = response.data.menu_items;
                 var filtered = items.filter(function (i) {
+                    console.log(arguments[0]);
                     return i.description.includes(searchTerm.toLowerCase());
                 })
                 return filtered;
