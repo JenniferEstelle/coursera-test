@@ -3,7 +3,25 @@
 
 
 //EXP: 
-/* .component('foundItems', {
+
+
+
+//see shoppingList example from lecture 37!
+/*(function () {
+'use strict';
+
+angular.module('ShoppingList')
+.component('shoppingList', {
+  templateUrl: 'src/shoppinglist/templates/shoppinglist.template.html',
+  bindings: {
+    items: '<'
+  }
+});
+
+})();*/
+    
+
+    /* .component('foundItems', {
             templateUrl: 'foundItems.html',
             controller: FoundItemsComponentController,
             binding: {
@@ -19,4 +37,3 @@
         $ctrl.removeItem = function (itemIndex) {
             $ctrl.onRemove({ index: itemIndex });
         }*/
-    
