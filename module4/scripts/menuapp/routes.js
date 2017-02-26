@@ -10,11 +10,11 @@ angular.module('MenuApp')
 
 RoutesConfig.inject = ['$stateProvider', '$urlRouterProvider'];
 function RoutesConfig($stateProvider, $urlRouterProvider) {
-    
+
     //If no other URL matches, redirect page to...
     $urlRouterProvider.otherwise('/');
 
-//Setup UI States
+    //Setup UI States
     $stateProvider
         .state('home', {
             url: '/',
@@ -23,26 +23,30 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
 
         .state('categories', {
             url: '/categories',
-            templateUrl: 'templates/categories.template.html', 
+            templateUrl: 'templates/categories.template.html',
             controller: 'MenuCategoriesController as categoriesCtrl',
             resolve: {
-                categories1: ['MenuDataService', function(MenuDataService) {
+                categories1: ['MenuDataService', function (MenuDataService) {
                     return MenuDataService.getAllCategories()
-                    .then(function(response) {
-                        return response.data;
-                    }).catch(function(error) {
-                        console.log("MenuDataService not returning response.data")
-                    })
-                }]    
+                        .then(function (response) {
+                            return response.data;
+                        }).catch(function (error) {
+                            console.log("MenuDataService not returning response.data")
+                        })
+                }]
             }
-                
+
+        })
+        
+        .state('categories.items', {
+            url: '/items/{categoryShortName}',
+            templateUrl: 'templates/items.template.html',
+            controller: 'ListItemsByCategoryController as listItemsCtrl',
+            params: { categoryShortName: null },
+            resolve: ['$stateParams', ' MenuDataService', function ($stateParams, MenuDataService) {
+                return MenuDataService.getItemsForCategory($stateParams.categoryShortName);
+            }]
         })
 
-       /* .state('items', {
-            url: '/items',
-            templateUrl: 'templates/items.template.html', 
-            controller: 'ItemsInCategoryController as itemsCtrl'
-        })*/
 
-        
 }
