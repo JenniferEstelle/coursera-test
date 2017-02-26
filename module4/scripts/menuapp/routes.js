@@ -23,13 +23,13 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
 
         .state('menuCategories', {
             url: '/menu-categories',
-            templateUrl: 'templates/menu-categories.template.html', 
+            templateUrl: 'templates/categories.template.html', 
             controller: 'MenuCategoriesController as categoriesCtrl'
         })
 
         .state('menuItems', {
             url: '/menu-items',
-            templateUrl: 'templates/menu-items.template.html', 
+            templateUrl: 'templates/items.template.html', 
             controller: 'ItemsInCategoryController as itemsCtrl'
         })
 

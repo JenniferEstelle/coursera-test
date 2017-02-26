@@ -1,21 +1,23 @@
 (function () {
     'use strict';
 
-angular.module('MenuApp')
-.controller('MenuCategoriesController', MenuCategoriesController);
+    angular.module('MenuApp')
+        .controller('MenuCategoriesController', MenuCategoriesController);
 
-MenuCategoriesController.$inject= ['MenuDataService'];
-function MenuCategoriesController(MenuDataService) {
-    var categoriesCtrl = this;
+    MenuCategoriesController.$inject = ['MenuDataService'];
+    function MenuCategoriesController(MenuDataService) {
+        var categoriesCtrl = this;
 
-    categoriesCtrl.items = [];
+        categoriesCtrl.categories = [];
 
-    categoriesCtrl.$onInit = function() {
-        MenuDataService.getAllCategories()
-        .then(function (response) {
-            categoriesCtrl.items = response;
-        })
+        categoriesCtrl.displayCategories = function () {
+            MenuDataService.getAllCategories().then(function (response) {
+                console.log('categoryResponse:', response)
+                categoriesCtrl.categories = response;
+                console.log('categoriesCtrl.categories', categoriesCtrl.categories);
+
+            })
+        }
     }
-}
 
 })();
