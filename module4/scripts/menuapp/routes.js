@@ -21,17 +21,27 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
             templateUrl: 'templates/home.template.html'
         })
 
-        .state('menuCategories', {
-            url: '/menu-categories',
+        .state('categories', {
+            url: '/categories',
             templateUrl: 'templates/categories.template.html', 
-            controller: 'MenuCategoriesController as categoriesCtrl'
+            controller: 'MenuCategoriesController as categoriesCtrl',
+            resolve: {
+                categories1: ['MenuDataService', function(MenuDataService) {
+                    return MenuDataService.getAllCategories()
+                    .then(function(response) {
+                        console.log('response.data in routes.js: ', response.data)
+                        return response.data;
+                    })
+                }]    
+            }
+                
         })
 
-        .state('menuItems', {
-            url: '/menu-items',
+       /* .state('items', {
+            url: '/items',
             templateUrl: 'templates/items.template.html', 
             controller: 'ItemsInCategoryController as itemsCtrl'
-        })
+        })*/
 
         
 }

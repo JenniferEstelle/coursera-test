@@ -8,21 +8,18 @@
     MenuDataService.$inject = ['$http', 'ApiBasePath'];
     function MenuDataService($http, ApiBasePath) {
         var service = this;
-        var categoryResponse = [];
+       
         service.getAllCategories = function () {
-            console.log("getAllCategories");
             var response = $http({
                 method: 'GET',
                 url: (ApiBasePath + '/categories.json')
             }).then(function (response) {
-                categoryResponse.push(response.data);
-                console.log("categories: ", categoryResponse);
-                return response.data;
-            }).catch(function (error) {
-                console.log("getAllCategories request failed.");
-            });
-            console.log(categoryResponse);
-            return categoryResponse;
+                console.log("menudataservice.js working")
+                 return response;
+             }).catch(function (error) {  //function error (response)
+                 console.log("Something went terribly wrong.");
+             });
+             return response;
 
         };
 
