@@ -29,8 +29,9 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
                 categories1: ['MenuDataService', function(MenuDataService) {
                     return MenuDataService.getAllCategories()
                     .then(function(response) {
-                        console.log('response.data in routes.js: ', response.data)
                         return response.data;
+                    }).catch(function(error) {
+                        console.log("MenuDataService not returning response.data")
                     })
                 }]    
             }
