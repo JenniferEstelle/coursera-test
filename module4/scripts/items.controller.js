@@ -8,7 +8,7 @@
     ListItemsByCategoryController.$inject = ['$stateParams', 'items1'];
     function ListItemsByCategoryController($stateParams, items1) {
         var listItemsCtrl = this;
-        listItemsCtrl.items = items1;
+        listItemsCtrl.items1 = items1;
     }
 
 })();

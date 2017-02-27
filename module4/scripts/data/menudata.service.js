@@ -14,7 +14,7 @@
                 method: 'GET',
                 url: (ApiBasePath + '/categories.json')
             }).then(function (response) {
-                console.log("menudataservice.js working")
+                console.log("getAllCategories.js working")
                  return response;
              }).catch(function (error) {  //function error (response)
                  console.log("Something went terribly wrong w/ getAllCategories.");
@@ -25,11 +25,13 @@
 
         //REQUIREMENT:  BEFORE the call to the server, your code should APPEND the value of categoryShortName (pass in as an arg) into the getItemsForCategory method.
          service.getItemsForCategory = function (categoryShortName) {  
+             console.log("testing!")
              var response = $http({
                  method: 'GET',
-                 url: (ApiBasePath + '/categories.json?category=' + categoryShortName)
+                 url: (ApiBasePath + '/categories.json?category=' + categoryShortName),
+                 
              }).then(function (response) {
-                 console.log('response.data.menu_items', response.data.menu_items);
+                 console.log('response.data.menu_items:  getItemsForCategory is working:', response.data.menu_items);
                  return response.data.menu_items;
              }).catch(function (error) {  
                  console.log("Something went terribly wrong w/ getItemsForCategory.");

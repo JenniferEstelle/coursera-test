@@ -40,14 +40,16 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
 
         .state('items', {  
             url: '/items/{categoryShortName}',
-            templateUrl: 'templates/items.template.html',
+            // templateUrl: 'templates/items.template.html',
+            template: "testing items state",
             controller: 'ListItemsByCategoryController as listItemsCtrl',
-            params: { categoryShortName: null },  //<a ui-sref="items(categoryShortName: display.short_name)</a>"
+            
+            params: { categoryShortName: null }, //<a ui-sref="items(categoryShortName: display.short_name)</a>"
             resolve: {
-                items1: ['$stateParams', ' MenuDataService', function ($stateParams, MenuDataService) {
+                items1: [ ' MenuDataService', '$stateParams', function (MenuDataService, $stateParams) {
                     console.log('testing!');
                     return MenuDataService.getItemsForCategory($stateParams.categoryShortName);  //returning a promise.  
-                    
+                
                     //REQUIREMENT:  BEFORE the call to the server, your code should APPEND the value of categoryShortName (pass in as an arg) into the getItemsForCategory method.
                 }]
             }
