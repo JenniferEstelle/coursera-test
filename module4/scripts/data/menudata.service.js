@@ -17,7 +17,7 @@
                 console.log("menudataservice.js working")
                  return response;
              }).catch(function (error) {  //function error (response)
-                 console.log("Something went terribly wrong.");
+                 console.log("Something went terribly wrong w/ getAllCategories.");
              });
              return response;
 
@@ -29,9 +29,10 @@
                  method: 'GET',
                  url: (ApiBasePath + '/categories.json?category=' + categoryShortName)
              }).then(function (response) {
+                 console.log('response.data.menu_items', response.data.menu_items);
                  return response.data.menu_items;
-             }).catch(function (error) {  //function error (response)
-                 console.log("Something went terribly wrong.");
+             }).catch(function (error) {  
+                 console.log("Something went terribly wrong w/ getItemsForCategory.");
              });
              return response;
          }
