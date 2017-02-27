@@ -1,5 +1,3 @@
-//is this in LESSON 4?
-
 (function () {
     'use strict';
 
@@ -10,6 +8,5 @@
                 items: '<',
             }
         });
-
 })();
 

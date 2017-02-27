@@ -16,21 +16,8 @@
 		</div>
 
 		<ui-view>
-
-
 		</ui-view>
-		<div >
-			<!--link to a list of categories of menu items "Menu Item Categories" in the restaurant-->
-			<!--clicking the link takes you to the /categories view (aka: state: menuCategories)--> 
-			<!--CATEGORIES VIEW: -->
-			<!--/categories view should list all available categories of items on the menu-->
-			<!--make each listing a link taking user to the /items view-->
-		</div>
-		<div >
-			<!--ITEMS VIEW: -->
-			<!--/items view state is dependent on category clicked (URL mapping will need to have a parameter in it...URL's listed in assignment are not literal URL's-->
-			<!--/while viewing the list of menu items for a particular category, if the user copies the URL into a different tab it should show the original view!!-->
-		</div>
+
 	</div>
 
 
@@ -39,7 +26,7 @@
 	<script src="../vendor/angular-ui-router/angular-ui-router.js"></script>
 
 	<!--MODULES-->
-	
+
 	<script type="text/javascript" src="scripts/menuapp/menuapp.module.js"></script>
 	<script type="text/javascript" src="scripts/menuapp/routes.js"></script>
 	<script type="text/javascript" src="scripts/data/data.module.js"></script>
@@ -47,12 +34,12 @@
 
 	<!--other scripts-->
 	<script type="text/javascript" src="scripts/data/menudata.service.js"></script>
-	
+
 	<script type="text/javascript" src="scripts/categories.controller.js"></script>
 	<script type="text/javascript" src="scripts/items.controller.js"></script>
 	<script type="text/javascript" src="scripts/categories.component.js"></script>
 	<script type="text/javascript" src="scripts/items.component.js"></script>
-	
+
 </body>
 
 </html>
