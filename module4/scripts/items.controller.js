@@ -9,6 +9,8 @@
     function ListItemsByCategoryController($stateParams, items1) {
         var listItemsCtrl = this;
         listItemsCtrl.items1 = items1;
+
+        console.log(items1);
     }
 
 })();
