@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/restaurant.css">
     <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/admin.css">
   </head>
   <body ng-app="restaurant" ng-strict-di>
 
@@ -54,8 +55,8 @@
                 <a href="#">
                   <span class="glyphicon glyphicon-info-sign"></span><br class="hidden-xs"> My Info</a>
               </li>
-              <li>
-                <a href="#">
+              <li id="navSignUpButton">
+                <a ui-sref="public.signup">
                   <span class="glyphicon glyphicon-certificate"></span><br class="hidden-xs"> Sign Up</a>
               </li>
               <li id="phone" class="hidden-xs">
@@ -111,19 +112,23 @@
     </footer>
 
     <!-- Libs -->
-    <script src="lib/jquery-2.1.4.min.js"></script>
+    <script src="../vendor/jquery-2.1.4.min.js"></script>
     <script src="lib/bootstrap.min.js"></script>
-    <script src="lib/angular.min.js"></script>
-    <script src="lib/angular-ui-router.min.js"></script>
+    <script src="../vendor/angular/angular.js"></script>
+    <script src="../vendor/angular-ui-router/angular-ui-router.js"></script>
 
     <!-- Main Restaurant Module -->
     <script src="src/restaurant.module.js"></script>
+
 
     <!-- Common Module -->
     <script src="src/common/common.module.js"></script>
     <script src="src/common/loading/loading.component.js"></script>
     <script src="src/common/loading/loading.interceptor.js"></script>
     <script src="src/common/menu.service.js"></script>
+
+    <!--Private Module-->
+    <script src="src/admin/admin.module.js"></script>
 
     <!-- Public Module -->
     <script src="src/public/public.module.js"></script>
@@ -132,6 +137,9 @@
     <script src="src/public/menu-category/menu-category.component.js"></script>
     <script src="src/public/menu-items/menu-items.controller.js"></script>
     <script src="src/public/menu-item/menu-item.component.js"></script>
+    <script src="scr/public/sign-up-form/sign-up.component.js"></script>
+    <script src="scr/public/sign-up-form/sign-up.controller.js"></script>
+    
 
     <!-- ADMIN SITE -->
 

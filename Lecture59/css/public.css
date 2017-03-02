@@ -37,6 +37,38 @@
 }
 /* END HOME PAGE */
 
+/* SIGN-UP FORM */
+.sign-up-form li {
+    list-style: none;
+}
+
+.ng-touched.ng-valid {
+  border: 3px green solid;
+}
+
+.ng-touched.ng-invalid {
+  border: 3px red solid;
+}
+
+li input{
+  color: #000;
+  margin-bottom: 15px;
+  }
+
+
+
+
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
+
+
+
+
+/* END SIGN-UP FORM */
+
 /* MENU CATEGORIES PAGE */
 .category-tile {
   position: relative;
