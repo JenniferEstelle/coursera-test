@@ -45,9 +45,11 @@
       .state('public.signup', {
         url: '/signup',
         templateUrl: 'src/public/sign-up-form/sign-up.html',
-        // controller: 'SignUpController',
+        controller: 'SignUpController',
         controllerAs: 'signUpCtrl'
 
       })
+
+      
   }
 })();

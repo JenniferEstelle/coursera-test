@@ -1,45 +1,55 @@
-<div>
+<div class="sign-up-form">
     <fieldset>
         <!--add action='' below-->
-        <form class="sign-up-form" name='signUpForm' novalidate>
+        <form name='signUpForm' novalidate>
             <h3>Sign-Up to Receive our Newsletter:</h3>
             <ul>
-                <li> First Name: <br>
-                    <input type='text' name='firstName' placeholder='i.e. John' ng-model='signUpCtrl.user.firstName' required>
-                    <span ng-if='signUpForm.firstName.$error.required  && signUpForm.firstName.$touched'> First name required.  </span>
+                <!--                <li> First Name: <br>
+                    <input name='firstName' type='text' ng-model='signUpCtrl.user.firstName' placeholder='i.e. John' required>
+                    <span ng-if='signUpForm.firstName.$error.required  && signUpForm.firstName.$touched'> First name required.  </span>                    {{signUpCtrl.user.firstName}}
                 </li>
-                <li> Last Name: <br> 
+                   <li> Last Name: <br>
                     <input type='text' name='lastName' placeholder='i.e. Doe' ng-model='signUpCtrl.user.lastName' required>
                     <span ng-if='signUpForm.lastName.$error.required  && signUpForm.lastName.$touched'> Last name required. </span>
                 </li>
 
                 <li> E-mail: <br>
-                    <input type='text' name='email' placeholder='i.e. johndoe@blah.com' ng-model='signUpCtrl.user.email' required>
+                    <input type='email' name='email' placeholder='i.e. johndoe@blah.com' ng-model='signUpCtrl.user.email' required>
                     <span ng-if='signUpForm.email.$error.required  && signUpForm.email.$touched'> Please enter valid e-mail address  </span>
                     <span ng-if='signUpForm.email.$invalid  && signUpForm.email.$touched'> Please enter valid e-mail address  </span>
                 </li>
                 <li> Phone: <br>
-                    <input type='text' name='phone' placeholder='i.e. 222-222-2222' ng-model='signUpCtrl.user.phone' ng-maxlength='12' pattern='(\d{3})-(\d{3})-(\d{4})' required>
-                    <span ng-if='signUpForm.phone.$error.required  && signUpForm.phone.$touched'> Please enter valid phone number  </span>
-                    <span ng-if='signUpForm.phone.$invalid  && signUpForm.phone.$touched'> Please enter valid phone number (i.e.222-222-2222)  </span>
-                </li>
-               <!-- <li> Favorite Menu Item: <br>
-                    <input type='text' name='customerFav' placeholder='Enter Item Number i.e. 52' ng-model='signUpCtrl.user.customerFav' required>
-                    <span ng-if='signUpForm.customerFav.$error.required  && signUpForm.customerFav.$touched'> No such menu number exists  </span>
-                    <button ng-disabled='signUpForm.$invalid' ng-click='signUpCtrl.submit()'>Submit</button>
+                    <input type='text' name='phone' placeholder='i.e. 222-222-2222' ng-model='signUpCtrl.user.phone' ng-maxlength='12' pattern='(\d{3})-(\d{3})-(\d{4})'
+                        required>
+                        <span ng-if='signUpForm.phone.$error.required  && signUpForm.phone.$touched'> Please enter valid phone number  </span>
+                        <span ng-if='signUpForm.phone.$invalid  && signUpForm.phone.$touched'> Please enter valid phone number (i.e.222-222-2222)  </span>
                 </li>-->
+                <li> Favorite Menu Item: <br>
+                    <input type='text' name='customerFav' placeholder='Enter Item Number i.e. A3' ng-model='signUpCtrl.user.customerFav' required> {{signUpCtrl.user.customerFav}}
+                    <span ng-if='signUpForm.customerFav.$error.required  && signUpForm.customerFav.$touched'> Field Required!</span>
+                    <span ng-if='signUpCtrl.customerFavNotFound'> Menu Item Doesn't Exist </span>
+
+                    </ng-messages>
+
+
+
+                </li>
             </ul>
-            <!--submit() should set signUpForm.complete to TRUE.-->
+            <button ng-disabled='signUpForm.$invalid' ng-click='signUpCtrl.submit($event)' ng-class="{'disabled-class': !signUpForm.$invalid}">Submit</button>
+            <!--  ... ;signUpCtrl.submit() should set signUpForm.complete to TRUE.-->
+
+
         </form>
     </fieldset>
 
-
-    Registration Summary:
-    <div id='info' ng-if='signUpForm.completed'>
-        First Name: {{signUpCtrl.user.firstName}} 
-        Last Name: {{signUpCtrl.user.lastName}} 
-        E-Mail: {{signUpCtrl.user.email}} 
-        Phone: {{signUpCtrl.user.phone}} 
-        <!--Favorite Menu Item: {{signUpCtrl.user.customerFav}}-->
+    <div ng-model='signUpCtrl.preferenceSavedMsg'>
+        {{signUpCtrl.preferenceSavedMsg}}
     </div>
-    <!--enter the details of the menu item that matches their number...-->
+
+
+
+
+
+</div>
+
+<!--enter the details of the menu item that matches their number...-->
