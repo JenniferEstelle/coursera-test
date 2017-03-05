@@ -2,22 +2,20 @@
     "use strict";
 
     angular.module('common')
-        .service('myInfoService', myInfoService);
+        .service('MyInfoService', MyInfoService);
 
 
-    myInfoService.$inject = ['MenuService', 'user'];
-    function myInfoService(MenuService, user) {
+    MyInfoService.$inject = ['MenuService', 'user'];
+    function MyInfoService(MenuService, user) {
         var service = this;
 
-        if (user) {
-            MenuService.getMenuItem()//NOT FINISHED
-        }
-        service.saveUserPreferences = function () {
-            service.user = user;
+        
+        service.saveUserPreferences = function (user) {
+            service.newUser = user;
         }
 
         service.getPreferences = function() {
-            return service.user;
+            return service.newUser;
         }
     }
 

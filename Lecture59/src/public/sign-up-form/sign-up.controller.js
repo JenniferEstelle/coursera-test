@@ -4,8 +4,8 @@
     angular.module('public')
         .controller('SignUpController', SignUpController);
 
-    SignUpController.$inject = ['MenuService'];
-    function SignUpController(MenuService) {
+    SignUpController.$inject = ['MenuService', "MyInfoService"];
+    function SignUpController(MenuService, MyInfoService) {
         var signUpCtrl = this;
         signUpCtrl.customerFavNotFound = false;
         // signUpCtrl.emptyMessage = "";
@@ -29,7 +29,7 @@
                     signUpCtrl.user.customerFavItem = itemFoundByShortName;
                     signUpCtrl.customerFavNotFound = false;
                      console.log('signUpCtrl.user.customerFav', signUpCtrl.user.customerFavItemDetails);  //can access ANY of item details using .short_name, etc.
-
+                    
                     if (itemFoundByShortName === undefined) {
                         signUpCtrl.customerFavNotFound = true;
                     } 
@@ -40,7 +40,6 @@
                 })
 
             console.log("item found by shortname", signUpCtrl.user.customerFavItem);
-
         }
 
     }
