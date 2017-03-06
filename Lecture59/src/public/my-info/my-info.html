@@ -1,5 +1,28 @@
 <div>
+    <div ng-if="myInfoCtrl.alreadySignedUp">
+        <div>
+            <h3>Customer Information:</h3>
+            <div>First name: {{ myInfoCtrl.firstName }}</div>
+            <div>Last name: {{ myInfoCtrl.lastName }}</div>
+            <div>E-mail address: {{ myInfoCtrl.email }}</div>
+            <div>Phone number: {{ myInfoCtrl.phone }}</div>
+        </div>
+        <div>
+            <h3>Customer's Favorite Dish:</h3>
+            <div ng-if="myInfoCtrl.customerFavItem">
+                <img class="img-responsive" width="250" height="150" src="images/menu/{{myInfoCtrl.customerFavItem.category_short_name}}/{{myInfoCtrl.customerFavItem.category_short_name}}.jpg">
+            </div>
+            <h4>{{myInfoCtrl.customerFavItem.name}} [{{myInfoCtrl.customerFav}}]</h4>
+            <p>{{ myInfoCtrl.customerFavItem.description }}</p>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div ng-if="!myInfoCtrl.alreadySignedUp">
+    <div>Not Signed Up Yet...</div>
     <div>
-        MYINFO
+        <button ui-sref="public.signup">Sign up Now!</button>
     </div>
 </div>

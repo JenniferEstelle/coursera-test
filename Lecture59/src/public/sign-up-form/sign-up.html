@@ -5,29 +5,29 @@
             <h3>Sign-Up to Receive our Newsletter:</h3>
             <ul>
                 <li> First Name: <br>
-                    <input name='firstName' type='text' ng-model='$ctrl.user.firstName' placeholder='i.e. John' required>
-                    <span ng-if='signUpForm.firstName.$error.required  && signUpForm.firstName.$touched'>First name required.</span> {{$ctrl.user.firstName}}
+                    <input name='firstName' type='text' ng-model='signUpCtrl.user.firstName' placeholder='i.e. John' required>
+                    <span ng-if='signUpForm.firstName.$error.required  && signUpForm.firstName.$touched'>First name required.</span> {{signUpCtrl.user.firstName}}
                 </li>
                 <li> Last Name: <br>
-                    <input type='text' name='lastName' placeholder='i.e. Doe' ng-model='$ctrl.user.lastName' required>
+                    <input type='text' name='lastName' placeholder='i.e. Doe' ng-model='signUpCtrl.user.lastName' required>
                     <span ng-if='signUpForm.lastName.$error.required  && signUpForm.lastName.$touched'>Last name required.</span>
                 </li>
 
-                <!--<li> E-mail: <br>
-                    <input type='email' name='email' placeholder='i.e. johndoe@blah.com' ng-model='$ctrl.user.email' required>
+                <li> E-mail: <br>
+                    <input type='email' name='email' placeholder='i.e. johndoe@blah.com' ng-model='signUpCtrl.user.email' required>
                     <span ng-if='signUpForm.email.$error.required  && signUpForm.email.$touched'>Please enter valid e-mail address</span>
                     <span ng-if='signUpForm.email.$invalid  && signUpForm.email.$touched'>Please enter valid e-mail address</span>
                 </li>
                 <li> Phone: <br>
-                    <input type='text' name='phone' placeholder='i.e. 222-222-2222' ng-model='$ctrl.user.phone' ng-maxlength='12' pattern='(\d{3})-(\d{3})-(\d{4})'
+                    <input type='text' name='phone' placeholder='i.e. 222-222-2222' ng-model='signUpCtrl.user.phone' ng-maxlength='12' pattern='(\d{3})-(\d{3})-(\d{4})'
                         required>
                         <span ng-if='signUpForm.phone.$error.required  && signUpForm.phone.$touched'>Please enter valid phone number</span>
                         <span ng-if='signUpForm.phone.$invalid  && signUpForm.phone.$touched'>Please enter valid phone number (i.e.222-222-2222)</span>
-                </li>-->
+                </li>
                 <li> Favorite Menu Item: <br>
-                    <input type='text' name='customerFav' placeholder='Enter Item Number i.e. A3' ng-model='$ctrl.user.customerFav' required> {{$ctrl.user.customerFav}}
+                    <input type='text' name='customerFav' placeholder='Enter Item Number i.e. A3' ng-model='signUpCtrl.user.customerFav' required> {{signUpCtrl.user.customerFav}}
                     <span ng-if='signUpForm.customerFav.$error.required  && signUpForm.customerFav.$touched'>Field Required!</span>
-                    <span ng-if='$ctrl.customerFavNotFound'>Menu Item Doesn't Exist</span>
+                    <span ng-if='signUpCtrl.customerFavNotFound'>Menu Item Doesn't Exist</span>
 
                     </ng-messages>
 
@@ -35,15 +35,15 @@
 
                 </li>
             </ul>
-            <button ng-disabled='signUpForm.$invalid' ng-click='$ctrl.submit($event)' ng-class="{'disabled-class': !signUpForm.$invalid}">Submit</button>
-            <!--  ... ;$ctrl.submit() should set signUpForm.complete to TRUE.-->
+            <button ng-disabled='signUpForm.$invalid' ng-click='signUpCtrl.submit($event)' ng-class="{'disabled-class': !signUpForm.$invalid}">Submit</button>
+            <!--  ... ;signUpCtrl.submit() should set signUpForm.complete to TRUE.-->
 
 
         </form>
     </fieldset>
 
-    <div ng-show='$ctrl.preferenceSavedMsg' class='ng-hide'>
-        {{$ctrl.preferenceSavedMsg}}
+    <div ng-if='signUpCtrl.signUpSucceded'>
+        Your information has been saved!
     </div>
 
 </div>

@@ -8,13 +8,24 @@
     function MyInfoService() {
         var service = this;
 
-        
-        service.saveUserPreferences = function (user) {
-            service.user = user;
+        var user;
+
+
+        service.saveUserPreferences = function (userDetail) {
+            // service.user = user;
+            user = {
+                firstName: userDetail.firstName,
+                lastName: userDetail.lastName,
+                email: userDetail.email,
+                phone: userDetail.phone,
+                customerFav: userDetail.customerFav,
+                customerFavItem: userDetail.customerFavItem
+            };
+            
         }
 
-        service.getPreferences = function() {
-            return service.user;
+        service.getPreferences = function () {
+            return user;
         }
     }
 
