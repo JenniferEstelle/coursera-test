@@ -56,8 +56,8 @@
               <a ui-sref="public.menu">
                 <span class="glyphicon glyphicon-cutlery"></span><br class="hidden-xs"> Menu</a>
             </li>
-            <li>
-              <a href="#">
+            <li id="navMyInfoButton">
+              <a ui-sref="public.myinfo">
                 <span class="glyphicon glyphicon-info-sign"></span><br class="hidden-xs"> My Info</a>
             </li>
             <li id="navSignUpButton">
@@ -130,14 +130,16 @@
   <script src="src/common/loading/loading.component.js"></script>
   <script src="src/common/loading/loading.interceptor.js"></script>
   <script src="src/common/menu.service.js"></script>
+  <script src="src/common/my-info.service.js"></script>
 
-  <!--Private Module-->
+  <!--Admin Module-->
   <script src="src/admin/admin.module.js"></script>
 
   <!-- Public Module -->
   <script src="src/public/public.module.js"></script>
   <script src="src/public/public.routes.js"></script>
   <script src="src\public\sign-up-form\sign-up.controller.js"></script>
+  <script src="src\public\my-info\my-info.controller.js"></script>
   <script src="src/public/menu/menu.controller.js"></script>
   <script src="src/public/menu-category/menu-category.component.js"></script>
   <script src="src/public/menu-items/menu-items.controller.js"></script>

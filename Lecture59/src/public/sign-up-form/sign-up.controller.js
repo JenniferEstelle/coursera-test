@@ -4,44 +4,44 @@
     angular.module('public')
         .controller('SignUpController', SignUpController);
 
-    SignUpController.$inject = ['MenuService', "MyInfoService"];
-    function SignUpController(MenuService, MyInfoService) {
-        var signUpCtrl = this;
-        signUpCtrl.customerFavNotFound = false;
-        // signUpCtrl.emptyMessage = "";
+    SignUpController.$inject = ['MyInfoService', 'MenuService'];
+    function SignUpController(MyInfoService, MenuService) {
+        var $ctrl = this;
+        $ctrl.customerFavNotFound = false;
 
-        var user = {
-            firstName: signUpCtrl.firstName,
-            lastName: signUpCtrl.lastName,
-            email: signUpCtrl.email,
-            phone: signUpCtrl.phone,
-            customerFav: signUpCtrl.customerFav,
-            customerFavItem: signUpCtrl.customerFavItem
+        $ctrl.user = {
+            firstName: $ctrl.firstName,
+            lastName: $ctrl.lastName,
+            email: $ctrl.email,
+            phone: $ctrl.phone,
+            customerFav: $ctrl.customerFav,
+            customerFavItem: $ctrl.customerFavItem
         }
 
 
-        signUpCtrl.submit = function (event) {
-            var shortName = signUpCtrl.user.customerFav
+        $ctrl.submit = function (event) {
+            var shortName = $ctrl.user.customerFav
             console.log('customerFav:', shortName);
 
             MenuService.getMenuItem(shortName)
                 .then(function (itemFoundByShortName) {
-                    signUpCtrl.user.customerFavItem = itemFoundByShortName;
-                    signUpCtrl.customerFavNotFound = false;
-                     console.log('signUpCtrl.user.customerFav', signUpCtrl.user.customerFavItemDetails);  //can access ANY of item details using .short_name, etc.
+                    user.customerFavItem = itemFoundByShortName;
+                    $ctrl.customerFavNotFound = false;
+                    console.log('user.customerFavItem', user.customerFavItem);  //can access ANY of item details using .short_name, etc..
                     
+
+                    MyInfoService.saveUserPreferences(user) = function() {
+                        $ctrl.preferenceSavedMsg = true;
+                    }
                     if (itemFoundByShortName === undefined) {
-                        signUpCtrl.customerFavNotFound = true;
-                    } 
-                
+                        $ctrl.customerFavNotFound = true;
+                    }
+
                 }).catch(function (error) {
                     console.log("dish not found.");
-                    signUpCtrl.customerFavNotFound = true;
+                    $ctrl.customerFavNotFound = true;
                 })
-
-            console.log("item found by shortname", signUpCtrl.user.customerFavItem);
         }
-
     }
 
 })();

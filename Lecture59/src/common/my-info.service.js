@@ -4,18 +4,17 @@
     angular.module('common')
         .service('MyInfoService', MyInfoService);
 
-
-    MyInfoService.$inject = ['MenuService', 'user'];
-    function MyInfoService(MenuService, user) {
+    MyInfoService.$inject = [];
+    function MyInfoService() {
         var service = this;
 
         
         service.saveUserPreferences = function (user) {
-            service.newUser = user;
+            service.user = user;
         }
 
         service.getPreferences = function() {
-            return service.newUser;
+            return service.user;
         }
     }
 

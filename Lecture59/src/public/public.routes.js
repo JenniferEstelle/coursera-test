@@ -46,9 +46,16 @@
         url: '/signup',
         templateUrl: 'src/public/sign-up-form/sign-up.html',
         controller: 'SignUpController',
-        controllerAs: 'signUpCtrl'
+        controllerAs: '$ctrl'
 
       })
+
+      .state('public.myinfo'), {
+        url: '/myinfo',
+        templateUrl: 'src/public/my-info/my-info.html',
+        controller:'MyInfoController',
+        controllerAs: '$ctrl'
+      }
 
       
   }
