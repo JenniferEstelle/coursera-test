@@ -6,7 +6,7 @@
             <ul>
                 <li> First Name: <br>
                     <input name='firstName' type='text' ng-model='signUpCtrl.user.firstName' placeholder='i.e. John' required>
-                    <span ng-if='signUpForm.firstName.$error.required  && signUpForm.firstName.$touched'>First name required.</span> {{signUpCtrl.user.firstName}}
+                    <span ng-if='signUpForm.firstName.$error.required  && signUpForm.firstName.$touched'>First name required.</span> 
                 </li>
                 <li> Last Name: <br>
                     <input type='text' name='lastName' placeholder='i.e. Doe' ng-model='signUpCtrl.user.lastName' required>
@@ -25,7 +25,7 @@
                         <span ng-if='signUpForm.phone.$invalid  && signUpForm.phone.$touched'>Please enter valid phone number (i.e.222-222-2222)</span>
                 </li>
                 <li> Favorite Menu Item: <br>
-                    <input type='text' name='customerFav' placeholder='Enter Item Number i.e. A3' ng-model='signUpCtrl.user.customerFav' required> {{signUpCtrl.user.customerFav}}
+                    <input type='text' name='customerFav' placeholder='Enter Item Number i.e. A3' ng-model='signUpCtrl.user.customerFav' required> 
                     <span ng-if='signUpForm.customerFav.$error.required  && signUpForm.customerFav.$touched'>Field Required!</span>
                     <span ng-if='signUpCtrl.customerFavNotFound'>Menu Item Doesn't Exist</span>
 
